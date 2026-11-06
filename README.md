@@ -1,1 +1,1 @@
-# Sistema-Distribu-do-de-Monitoramento-Ambiental
+Sistema Distribuido de Monitoramento Ambiental
