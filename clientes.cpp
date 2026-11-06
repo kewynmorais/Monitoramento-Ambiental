@@ -22,13 +22,26 @@ void setup() {
     delay(500);
     Serial.print(".");
   }
-  Serial.println("\nConectado ao Wi-Fi!");
+  Serial.println("\nESP32_01 conectado ao Wi-Fi!");
 }
 
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
+    float temperatura = dht.readTemperature();
+    float umidade = dht.readHumidity();
+
+    if (!isnan(temp) && !isnan(hum)) {
     HTTPClient http;
     http.begin(serverUrl);
     http.addHeader("Content-Type", "application/json");
 
-    float valorSensor = 24.5; //atualizar de acordo com o valor real do sensor
+    String jsonPayload = "{\"cliente_id\":\"ESP32_01\",\"temperatura\":" + String(temp) + ",\"humidade\":" + String(hum) + "}";
+
+    int httpResponseCode = http.POST(jsonPayload);
+      Serial.print("Envio ESP32_01 - Status HTTP: ");
+      Serial.println(httpResponseCode);
+      http.end();
+    }
+  }
+  delay(5000); // Envia a cada 5 segundos
+}
