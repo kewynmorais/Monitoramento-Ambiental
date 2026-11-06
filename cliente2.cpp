@@ -1,6 +1,8 @@
 #include <Wifi.h>
 #include <Httpcliente.h>
 
+#define LDR_PIN 34 // Pino Analógico
+
 const char* ssid "nome-da-rede";
 const char* password = "senha-wifi";
 
