@@ -1,5 +1,9 @@
 #include <Wifi.h>
 #include <Httpcliente.h>
+#include <DHT.h>
+
+#define DHTPIN 4
+#define DHTTYPE DHT11 //Em caso de sensor temp e umidade
 
 const char* ssid "nome-da-rede";
 const char* password = "senha-wifi";
